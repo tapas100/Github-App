@@ -1,0 +1,61 @@
+<mat-card class="wrap">
+  <button mat-icon-button [routerLink]="['/user-list']">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <div class="content">
+    <div class="profile open animated zoomIn">
+      <div class="avatar">
+        <div mat-card-avatar class="avatar-wrapper" [style.background-image]="'url('+userDetails.avatar_url+')'"></div>
+        <div class="bubble">
+          <div class="basic-info mt-3">
+            <h3>{{userDetails.name}}</h3>
+            <span class="gp-text-light">{{userDetails.location}}</span>
+          </div>
+          <div class="row mt-5 mb-3">
+            <div class="col-sm-6 col-md-3 col-xl-3 mt-2 mb-2">
+              <h5>{{userDetails.followers}}</h5>
+              <span class="gp-text-light">Followers</span>
+            </div>
+            <div class="col-sm-6 col-md-3 col-xl-3 mt-2 mb-2">
+              <h5>{{userDetails.following}}</h5>
+              <span class="gp-text-light">Following</span>
+            </div>
+            <div class="col-sm-6 col-md-3 col-xl-3 mt-2 mb-2">
+              <h5>{{userDetails.public_repos}}</h5>
+              <span class="gp-text-light">Repositories</span>
+            </div>
+            <div class="col-sm-6 col-md-3 col-xl-3 mt-2 mb-2">
+              <h5>{{userDetails.public_gists}}</h5>
+              <span class="gp-text-light">Gists</span>
+            </div>
+          </div>
+        </div>
+        <div class="bubble">
+          <div class="text-center mt-3">
+            <h5>All Repositories ({{userDetails.public_repos}})</h5>
+          </div>
+          <mat-list class="mt-3 mb-3">
+            <mat-list-item class="text-left" *ngFor="let repository of userRepositories">
+              <mat-icon class="gp-text-light" mat-list-icon>folder</mat-icon>
+              <h5 mat-line>{{repository.name}}</h5>
+              <span class="gp-text-light mt-2" mat-line> {{repository.description}} </span>
+              <small class="gp-text-light">{{parseSize(repository.size)}}</small>
+              <div mat-line class="d-flex mt-2">
+                <div class="gp-w-10">
+                   <mat-icon class="gp-icon-small gp-text-light">call_split</mat-icon>
+                   <span class="ml-1 gp-text-light">{{repository.forks}}</span>
+                </div>
+                <div class="gp-w-10">
+                    <mat-icon class="gp-icon-small gp-text-light">visibility</mat-icon>
+                    <span class="ml-1 gp-text-light">{{repository.watchers}}</span>
+                 </div>
+              </div>
+              <mat-divider></mat-divider>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</mat-card>
